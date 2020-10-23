@@ -13,7 +13,7 @@ Each player (including 1 opponent) starts with $10,000. Each match’s minimum b
 
 Once one of the players loses all his/her money after a match, they lose. Then, the game ends. The player can choose to restart.
 
-1) Generation of random game sets or events
+1) Generation of random game sets or events \n
     Random shuffle of the stored cards will occur so as to deal the cards randomly
     The additional cards requested will also be dealt randomly
     Random seed (using the time) for random shuffle
