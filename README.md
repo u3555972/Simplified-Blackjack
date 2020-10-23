@@ -1,5 +1,5 @@
 # C-Blackjack
-C++ Hangman program for COMP2113 Project.
+C++ Blackjack program for COMP2113 Project.
 
 **Chan, Cheuk Hang (3035559725)**
 
