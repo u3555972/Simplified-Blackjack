@@ -13,19 +13,19 @@ Each player (including 1 opponent) starts with $10,000. Each match’s minimum b
 
 Once one of the players loses all his/her money after a match, they lose. Then, the game ends. The player can choose to restart.
 
-1) Generation of random game sets or events \n
-    Random shuffle of the stored cards will occur so as to deal the cards randomly
-    The additional cards requested will also be dealt randomly
-    Random seed (using the time) for random shuffle
-2) Data structures for storing game status
-    The amount of money the player has and the amount the computer has will be stored such as to know how much money can be bet. The game may continue until one or     both of the players run out of money. 
-        The money will be stored as an integer in the game
-        The amount of money used in a game will also be stored as an integer
-    The array will also store the cards received and as such the sum can be calculated after each round for each player.
-    An array is used to store the different types of cards there are (52 of them).
-        The cards will be removed and added to the players array depending on the random shuffle. 
-    The user name will also be stored in the string format.
-3) Dynamic memory management
+1) Generation of random game sets or events. 
+    Random shuffle of the stored cards will occur so as to deal the cards randomly. 
+    The additional cards requested will also be dealt randomly. 
+    Random seed (using the time) for random shuffle. 
+2) Data structures for storing game status. 
+    The amount of money the player has and the amount the computer has will be stored such as to know how much money can be bet. The game may continue until one or     both of the players run out of money.   
+        The money will be stored as an integer in the game. 
+        The amount of money used in a game will also be stored as an integer. 
+    The array will also store the cards received and as such the sum can be calculated after each round for each player.  
+    An array is used to store the different types of cards there are (52 of them).  
+        The cards will be removed and added to the players array depending on the random shuffle.   
+    The user name will also be stored in the string format.  
+3) Dynamic memory management. 
     A dynamic array is requested as the length of the game is unknown. After each round the player is prompted to continue playing or quit and after each round.             With each round, additional memory is required to store the money and the cards.
         The cards will first be taken back using the destructor and using pointers and dynamic memory, the new cards will be stored.
     With each additional card requested, additional memory is required.
