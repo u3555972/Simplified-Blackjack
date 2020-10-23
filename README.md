@@ -5,4 +5,4 @@ C++ Blackjack program for COMP2113 Project.
 
 **Shah, Aashana Chetan (3035552155)**
 
-**Game Description: Hangman**
+**Game Description: Blackjack**
