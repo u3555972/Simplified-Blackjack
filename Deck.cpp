@@ -118,6 +118,8 @@ void determine_w_l(int p_hand_value, int c_hand_value) {
 }
 
 int main() {
+  char newgame = 'Y';
+  while (newgame == 'Y') {
   string *deck = new string[52];
   string *player_deck = new string[5];
   string *comp_deck = new string [5];
@@ -161,7 +163,7 @@ int main() {
 
   //char res = determine_w_l(p_hand_value, c_hand_value);
   cout << endl;
-  bool skip = true;
+  bool skip = true, busted = false;
   if (p_hand_value > 21) {
     cout << "Busted! You lose..." << endl;
   }
@@ -201,6 +203,7 @@ int main() {
           cout << "Busted! You lose..." << endl;
           decision = 'N';
           skip = false;
+          busted = true;
         }
       }
     }
@@ -229,12 +232,7 @@ int main() {
     cout << endl;
   }
 
-  else {
-    if (c_hand_value < 17) {
-      cout << "Dealer draws a card..." << endl;
-      add_to_comp_deck(comp_deck, c_counter, deck);
-    }
-    p_hand_value = player_sum(player_deck, p_counter);
+  else if (busted == true) {
     cout << endl;
     cout << "Dealer's Hand:" << endl;
     int c = 0;
@@ -250,6 +248,33 @@ int main() {
     cout << "Dealer's Hand Value: " << c_hand_value << endl;
     cout << endl;
   }
+
+  else {
+    if (c_hand_value < 17) {
+      cout << "Dealer draws a card..." << endl;
+      add_to_comp_deck(comp_deck, c_counter, deck);
+    }
+    //p_hand_value = player_sum(player_deck, p_counter);
+    cout << endl;
+    cout << "Dealer's Hand:" << endl;
+    int c = 0;
+    while (c < c_counter) {
+      cout << comp_deck[c];
+      if (c < (c_counter-1)) {
+        cout << " ";
+      }
+      c+= 1;
+    }
+    cout << endl;
+    c_hand_value = comp_sum(comp_deck, c_counter);
+    cout << "Dealer's Hand Value: " << c_hand_value << endl;
+    cout << endl;
+  }
+  cout << "Do you want to play again (Y/N)?: ";
+  cin >> newgame;
+  }
+  cout << endl;
+  cout << "Thank you for playing!" << endl;
 }
 
   // int c = 0;
