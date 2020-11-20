@@ -166,10 +166,10 @@ int main() {
     add_to_comp_deck(comp_deck, c_counter, deck);
     add_to_comp_deck(comp_deck, c_counter, deck);
 
-    cout<<"Would you like to raise? (Y) or (N)"<<endl;
+    cout<<"Would you like to raise (Y/N)?: "<<endl;
     char raise, raisevalue;
     if (raise=='Y'){
-      cout<<"How much would you like to raise by?"<<endl;
+      cout<<"How much would you like to raise by?: "<<endl;
       cin>>raisevalue;
       if (raisevalue<=moneypn){
         moneypn-=raisevalue;
@@ -187,6 +187,7 @@ int main() {
     // cout << endl;
     int c_hand_value = comp_sum(comp_deck, c_counter);
     cout << endl;
+    
 
     bool skip = true, busted = false;
     if (p_hand_value > 21) {
