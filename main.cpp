@@ -7,6 +7,7 @@ using namespace std;
 
 void displaycurrent(string name){
   string moneyp, moneyc;
+  //prints name and total money of player and computer
   ifstream fin;
   fin.open(name);
   cout<<"Name: ";
@@ -22,6 +23,7 @@ void displaycurrent(string name){
 }
 
 void newg(string name){
+  //new game opens deletes originally saved game and gives computer $10000
   ifstream fin;
   fin.open(name);
   char n[50];
@@ -52,12 +54,11 @@ int main() {
   cout<<"--------------------------------------------------------------------------------"<<endl;
   cout<<"What is your name? ";
   cin>>name;
+  //check if file exists
   ifstream fin;
   fin.open(name);
+  //if it doesnt, create a new file
   if (fin.fail()){
-    ofstream fout;
-    fout.open(name);
-    fout.close();
     newg(name);
   }
   else {
