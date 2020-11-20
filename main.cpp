@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <cstdio>
-#include <stdio.h>
+#include "deck.h"
 using namespace std;
 
 void displaycurrent(string name){
