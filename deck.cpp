@@ -31,28 +31,31 @@ void shuffle_deck(string *deck) { // Allows the deck to automatically be updated
 string deal_cards(string *deck) { // Allows deck to automatically be updated
   string card = deck[0]; // Holder to return later
   for (int i = 1; i < 52; i++) {
-    deck[i-1] = deck[i];
+    deck[i-1] = deck[i]; // Manipulates deck so that it basically shifts 1 to the left
   }
-  return card;
+  return card; // Returns card so that it may be added to either player's hand or comp's (dealer's) hand
 }
 
+// Function adds cards to the player's deck
 void add_to_player_deck(string *player_deck, int &p_counter, string *deck) {
-  string add_card = deal_cards(deck);
-  player_deck[p_counter] = add_card;
-  p_counter++;
+  string add_card = deal_cards(deck); // Calls upon deal_cards function to request a card
+  player_deck[p_counter] = add_card; // Using the counter, it will add it to the end of the player_deck array
+  p_counter++; // Adds so that it keep tracks where the last part of the array is
 }
 
+// Function adds cards to the comp's (dealer's deck)
 void add_to_comp_deck(string *comp_deck, int &c_counter, string *deck) {
-  string add_card = deal_cards(deck);
-  comp_deck[c_counter] = add_card;
-  c_counter++;
+  string add_card = deal_cards(deck); // Calls upon deal_cards function to request a card
+  comp_deck[c_counter] = add_card; // Using the counter, it will add it to the end of the comp_deck array
+  c_counter++; // Adds so that it keep tracks where the last part of the array is
 }
 
+// Function calculates the player's sum (value of hand)
 int player_sum(string *player_deck, int &p_counter) {
   string temp_deck[5];
   int value_deck=0;
   for (int cards = 0; cards < p_counter; cards++) {
-    temp_deck[cards] = player_deck[cards][0];
+    temp_deck[cards] = player_deck[cards][0]; // Extracts only the ranks, not suits
   }
   for (int value = 0; value < p_counter; value ++) {
     if (temp_deck[value] == "J" || temp_deck[value] == "Q" || temp_deck[value] == "K" || temp_deck[value] == "1") {
