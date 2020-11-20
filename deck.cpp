@@ -1,6 +1,5 @@
 #include <string>
 #include <iostream>
-#include <fstream>
 #include <ctime>
 #include <cstdlib>
 
@@ -31,8 +30,6 @@ void shuffle_deck(string *deck) { // Allows the deck to automatically be updated
 // Function for dealing cards to either player or comp (dealer)
 string deal_cards(string *deck) { // Allows deck to automatically be updated
   string card = deck[0]; // Holder to return later
-  string* temp_deck = new string[52];
-  deck[0] = "0";
   for (int i = 1; i < 52; i++) {
     deck[i-1] = deck[i];
   }
