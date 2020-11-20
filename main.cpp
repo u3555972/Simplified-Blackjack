@@ -4,6 +4,38 @@
 #include <cstdio>
 #include <stdio.h>
 using namespace std;
+
+void displaycurrent(string name){
+  string moneyp, moneyc;
+  ifstream fin;
+  fin.open(name);
+  cout<<"Name: ";
+  fin>>name;
+  cout<<name<<'\n';
+  cout<<"Total money: $";
+  fin>>moneyp;
+  cout<<moneyp<<'\n';
+  cout<<"The computer has $";
+  fin>>moneyc;
+  cout<<moneyc<<endl;
+  fin.close();
+}
+
+void newg(string name){
+  ifstream fin;
+  fin.open(name);
+  char n[50];
+  for (int i=0; i<name.length(); ++i){
+    n[i]=name[i];
+  }
+  remove(n);
+  ofstream fout;
+  fout.open(name);
+  fout<<name<<'\n'<<"10000"<<'\n'<<'\n'<<"10000"<<'\n'<<endl;
+  fout.close();
+  displaycurrent(name);
+}
+
 int main() {
   string name, money;
   char saved;
@@ -25,27 +57,17 @@ int main() {
   if (fin.fail()){
     ofstream fout;
     fout.open(name);
+    fout.close();
+    newg(name);
   }
   else {
     cout<<"You have a saved game. Do you want to continue (C) or start a new game (N): ";
     cin>>saved;
     if (saved=='C'){
-      cout<<"Name: ";
-      fin>>name;
-      cout<<name<<'\n';
-      cout<<"Total money: $";
-      fin>>money;
-      cout<<money<<'\n';
+      displaycurrent(name);
     }
     else if (saved=='N') {
-        char n[50];
-        for (int i=0; i<name.length(); ++i){
-          n[i]=name[i];
-        }
-        remove(n);
-      ofstream fout;
-      fout.open(name);
-      fout<<name<<'\n'<<"10000"<<'\n'<<'\n'<<"10000"<<'\n'<<endl;
+      newg(name);
     }
     else {
       cout<<"Answer invalid. Please try again.";
@@ -53,5 +75,6 @@ int main() {
     }
   }
   fin.close();
+
 return 0;
 }
