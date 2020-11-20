@@ -1,8 +1,8 @@
-Make_deck_test.o: Make_deck_test.cpp Make_deck_test.h
-	g++ -c Make_deck_test.cpp
+deck.o: deck.cpp deck.h
+	g++ -c deck.cpp
 
-main.o: main.cpp Make_deck_test.h
+main.o: main.cpp deck.h
 	g++ -c main.cpp
 
-game: main.o Make_deck_test.o
-	g++ main.o Make_deck_test.o -o game
+game: main.o deck.o
+	g++ main.o deck.o -o game
