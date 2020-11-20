@@ -105,7 +105,7 @@ int main() {
     //  cout << "You must bet $1000" << endl;
     //  pool += player_money;
     //  player_money = player_money - 1000;
-      string line, mp, mc, moneyp, moneyc;
+      string line, moneyp, moneyc;
       int moneypn, moneycn, pool;
       ifstream fin;
       fin.open(name+".txt");
@@ -116,8 +116,8 @@ int main() {
       cout << "The minimum bet is $1000" << endl;
       if (stoi(moneyp) < 1000) {
         cout << "You must bet all in..." << endl;
-        pool += stoi(moneyp)+1000;
-        moneycn=stoi(moneyc)-1000;
+        pool += stoi(moneyp);
+        moneycn=stoi(moneyc);
       }
       else {
         cout << "You must bet $1000" << endl;
@@ -125,6 +125,12 @@ int main() {
         moneycn=stoi(moneyc)-1000;
         pool=moneypn+moneycn;
       }
+      ofstream fout;
+      fout.open(name+".txt");
+      while (getline(fin,line)) {
+      line.replace(line.find(moneyp),moneyp.length(),"");
+      fout<<moneypn<<endl;
+    }
 
     cout << "Your Hand:" << endl;
     add_to_player_deck(player_deck, p_counter, deck);
