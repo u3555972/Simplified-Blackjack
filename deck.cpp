@@ -52,58 +52,60 @@ void add_to_comp_deck(string *comp_deck, int &c_counter, string *deck) {
 
 // Function calculates the player's sum (value of hand)
 int player_sum(string *player_deck, int &p_counter) {
-  string temp_deck[5];
+  string temp_deck[5]; // temp_deck to hold ranks, no suits
   int value_deck=0;
   for (int cards = 0; cards < p_counter; cards++) {
     temp_deck[cards] = player_deck[cards][0]; // Extracts only the ranks, not suits
   }
   for (int value = 0; value < p_counter; value ++) {
-    if (temp_deck[value] == "J" || temp_deck[value] == "Q" || temp_deck[value] == "K" || temp_deck[value] == "1") {
-      value_deck += 10;
+    if (temp_deck[value] == "J" || temp_deck[value] == "Q" || temp_deck[value] == "K" || temp_deck[value] == "1") { // All these ranks = 10
+      value_deck += 10; // Add 10 to the value of the deck
     }
     else if (temp_deck[value] == "A") {
-      value_deck += 11;
+      value_deck += 11; // A can be 11
     }
     else {
-      value_deck += stoi(temp_deck[value]);
+      value_deck += stoi(temp_deck[value]); // Everything else is simply the value of the rank
     }
   }
-  return value_deck;
+  return value_deck; // Returns the total value of the deck
 }
 
+// Function calculates the comp's (dealer's) sum (value of hand)
 int comp_sum(string *comp_deck, int &c_counter) {
-  string temp_deck[5];
+  string temp_deck[5]; // temp_deck to hold ranks, no suits
   int value_deck=0;
   for (int cards = 0; cards < c_counter; cards++) {
-    temp_deck[cards] = comp_deck[cards][0];
+    temp_deck[cards] = comp_deck[cards][0]; // Extracts only the ranks, not suit
   }
   for (int value = 0; value < c_counter; value ++) {
-    if (temp_deck[value] == "J" || temp_deck[value] == "Q" || temp_deck[value] == "K" || temp_deck[value] == "1") {
-      value_deck += 10;
+    if (temp_deck[value] == "J" || temp_deck[value] == "Q" || temp_deck[value] == "K" || temp_deck[value] == "1") { // All these ranks = 10
+      value_deck += 10; // Add 10 to the value of the deck
     }
     else if (temp_deck[value] == "A") {
-      value_deck += 11;
+      value_deck += 11; // A can be 11
     }
     else {
-      value_deck += stoi(temp_deck[value]);
+      value_deck += stoi(temp_deck[value]); // Everything else is simply the value of the rank
     }
   }
-  return value_deck;
+  return value_deck; // Returns the total value of the deck
 }
 
+// Function to determine who won
 void determine_w_l(int p_hand_value, int c_hand_value) {
-  if (p_hand_value == 21) {
+  if (p_hand_value == 21) { // Getting 21 automatically wins
     cout << "Blackjack! You win..." << endl;
   }
   else if (p_hand_value > c_hand_value) {
-    cout << "Your hand of " << p_hand_value << " is greater than the Dealer's hand of " << c_hand_value << endl;
+    cout << "Your hand of " << p_hand_value << " is greater than the Dealer's hand of " << c_hand_value << endl; // If player value > comp_value, then player wins
     cout << "You Win!" << endl;
   }
   else if (c_hand_value > 21) {
-    cout << "Dealer busted! You win!" << endl;
+    cout << "Dealer busted! You win!" << endl; // If dealer gets above 21, dealer is "busted" (loses)
   }
   else if (c_hand_value > p_hand_value) {
-    cout << "The Dealer's hand of " << c_hand_value << " is greater than your hand of " << p_hand_value << endl;
+    cout << "The Dealer's hand of " << c_hand_value << " is greater than your hand of " << p_hand_value << endl; // If comp_value > player value, then comp wins
     cout << "You lose..." << endl;
   }
 }
