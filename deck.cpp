@@ -6,32 +6,33 @@
 
 using namespace std;
 
-// Function for building deck
+// Function for building deck via dynamic array
 void build_deck(string *deck) {
   int counter = 0;
   string rank[13] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
   string suit[4] = {"\u2660", "\u2661", "\u2662", "\u2663"};
-  for (int i=0; i<13; i++) {
-    for (int j=0; j<4; j++) {
-      deck[counter] = rank[i] + suit[j];
-      counter ++;
+  for (int i=0; i<13; i++) { // Goes through ranks
+    for (int j=0; j<4; j++) { // Goes through suits
+      deck[counter] = rank[i] + suit[j]; // Append them together and because pointer array, automatically updated in main.cpp
+      counter ++; // Goes to next index
     }
   }
 }
 
-void shuffle_deck(string *deck) {
-  srand(time(0));
-  for (int card=0; card<52; card++) {
-    int shuffle = card + (rand() % (52 - card));
-    swap(deck[card], deck[shuffle]);
+// Function for shuffling deck
+void shuffle_deck(string *deck) { // Allows the deck to automatically be updated
+  srand(time(0)); // random seed using time so that each random shuffle is always different
+  for (int card=0; card<52; card++) { // loop to go through each card in the deck
+    int shuffle = card + (rand() % (52 - card)); // shuffling takes on a random calculated value
+    swap(deck[card], deck[shuffle]); // swaps the position of the card with the shuffled card
   }
 }
 
-string deal_cards(string *deck) {
-  string card = deck[0];
+// Function for dealing cards to either player or comp (dealer)
+string deal_cards(string *deck) { // Allows deck to automatically be updated
+  string card = deck[0]; // Holder to return later
   string* temp_deck = new string[52];
   deck[0] = "0";
-
   for (int i = 1; i < 52; i++) {
     deck[i-1] = deck[i];
   }
