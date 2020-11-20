@@ -269,7 +269,7 @@ int main() {
     }
     cout << "Do you want to play again (Y/N)?: ";
     cin >> newgame;
-    }
+  }
   cout << endl;
   cout << "Thank you for playing!" << endl;
 }
