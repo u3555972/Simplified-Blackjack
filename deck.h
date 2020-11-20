@@ -1,6 +1,6 @@
 //gcd.h
-#ifndef build_deck
-#define build_deck
+#ifndef deck.h
+#define deck.h
 
 void build_deck(string *deck);
 
