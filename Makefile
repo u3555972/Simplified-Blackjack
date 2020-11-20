@@ -6,3 +6,8 @@ main.o: main.cpp deck.h
 
 game: main.o deck.o
 	g++ main.o deck.o -o game
+
+clean:
+	rm -f game main.o deck.o
+
+PHONY: clean
