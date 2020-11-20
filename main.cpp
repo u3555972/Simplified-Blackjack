@@ -49,7 +49,7 @@ int main() {
   cout<<endl;
   cout<<"1) Each player starts with $10,000"<<endl;
   cout<<"2) The minimum betting for each player is $1,000 per match"<<endl;
-  cout<<"3) After recieving the player recieves their cards, they may choose to raise their betting amount"<<endl;
+  cout<<"3) After receiving the player receives their cards, they may choose to raise their betting amount"<<endl;
   cout<<"4) After a player raises, the player must match the raise and the round commences. If the player is unable to match the raise, they lose the round immediately"<<endl;
   cout<<"5) If a round is matched, players can either request another card, reveal their cards or fold (forfeit match)"<<endl;
   cout<<"6) If a player cannot pay the minimum bet or loses all their money at the end of a round, they lose the match and the game ends."<<endl;
@@ -88,6 +88,21 @@ int main() {
 
     build_deck(deck);
     shuffle_deck(deck);
+    
+    // Retrieve money from txt file
+    // player_money = getline (2nd line)
+    // int pool = 0;
+    // cout << "You currently have: $" << player_money;
+    // cout << endl;
+    // cout << "The minimum bet is $1000 << endl;
+    // if (player_money < 1000) {
+    //  cout << "You must bet all in..." << endl; }
+    //  pool += player_money;
+    //  player_money = 0;
+    // else {
+    //  cout << "You must bet $1000" << endl;
+    //  pool += player_money;
+    //  player_money = player_money - 1000;
 
     cout << "Your Hand:" << endl;
     add_to_player_deck(player_deck, p_counter, deck);
