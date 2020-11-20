@@ -4,7 +4,7 @@ deck.o: deck.cpp deck.h
 	g++ $(FLAGS) -c deck.cpp
 
 main.o: main.cpp deck.h
-	g++ $(FLAGS) -c main.cpp -c
+	g++ $(FLAGS) -c main.cpp
 
 game: main.o deck.o
 	g++ main.o deck.o -o game
