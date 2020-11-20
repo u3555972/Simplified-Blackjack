@@ -77,5 +77,90 @@ int main() {
   }
   fin.close();
 
-return 0;
+  string *deck = new string[52];
+  string *player_deck = new string[5];
+  string *comp_deck = new string [5];
+  int p_counter = 0;
+  int c_counter = 0;
+
+  build_deck(deck);
+  shuffle_deck(deck);
+
+  cout << "Your Hand:" << endl;
+  add_to_player_deck(player_deck, p_counter, deck);
+  add_to_player_deck(player_deck, p_counter, deck);
+  int p = 0;
+  while (p < p_counter) {
+    cout << player_deck[p];
+    if (p < (p_counter-1)) {
+      cout << " ";
+    }
+    p += 1;
+  }
+
+  int p_hand_value = player_sum(player_deck, p_counter);
+  cout << "Your current hand value is: " << p_hand_value;
+  cout << endl;
+  cout << endl;
+
+  cout << "Dealer's Hand: " << endl;
+  add_to_comp_deck(comp_deck, c_counter, deck);
+  add_to_comp_deck(comp_deck, c_counter, deck);
+  int c = 0;
+  while (c < c_counter) {
+    cout << comp_deck[c];
+    if (c < (c_counter-1)) {
+      cout << " ";
+    }
+    c+= 1;
+  }
+  cout << endl;
+  // for (int card=0; card<52; card++) {
+  //   cout<< deck[card] << endl;
+  // }
+
+  // int p_counter = 0;
+  // for (int p_cards=0; p_cards<2; p_cards++) {
+  //   string t = deal_cards(deck);
+  //   player_deck[p_cards] = t;
+  //   p_counter ++;
+  // }
+
+  // int c_counter = 0;
+  // for (int c_cards=0; c_cards<2; c_cards++) {
+  //   string t = deal_cards(deck);
+  //   comp_deck[c_cards] = t;
+  //   c_counter ++;
+  // }
+
+  //string *d_ptr = build_deck(deck);
+  // for (int k=0; k<52; k++) {
+  //   cout << d_ptr[k] << endl;
+  // }
+
+  //string *ds_ptr = shuffle_deck(d_ptr);
+  // for (int x=0; x <52; x++) {
+  //   cout << ds_ptr[x] << endl;
+  // }
+
+  // string t = deal_cards(ds_ptr);
+  // cout << t;
+  //
+  // for (int y=0; y<51; y++) {
+  //   cout << deck[y] << endl;
+  // }
+
 }
+//   string deck[52];
+//   int counter = 0;
+//   string rank[13] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+//   string suit[4] = {"\u2660", "\u2661", "\u2662", "\u2663"};
+//   for (int i=0; i<13; i++) {
+//     for (int j=0; j<4; j++) {
+//       deck[counter] = rank[i] + suit[j];
+//       counter ++;
+//     }
+//   }
+//   for (int k=0; k<52; k++) {
+//     cout << deck[k] << endl;
+//   }
