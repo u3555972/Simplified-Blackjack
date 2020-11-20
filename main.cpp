@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <cstdio>
+#include <sstream>
 #include "deck.h"
 using namespace std;
 
@@ -49,7 +50,7 @@ int main() {
   cout<<endl;
   cout<<"1) Each player starts with $10,000"<<endl;
   cout<<"2) The minimum betting for each player is $1,000 per match"<<endl;
-  cout<<"3) After receiving the player receives their cards, they may choose to raise their betting amount"<<endl;
+  cout<<"3) After recieving the player recieves their cards, they may choose to raise their betting amount"<<endl;
   cout<<"4) After a player raises, the player must match the raise and the round commences. If the player is unable to match the raise, they lose the round immediately"<<endl;
   cout<<"5) If a round is matched, players can either request another card, reveal their cards or fold (forfeit match)"<<endl;
   cout<<"6) If a player cannot pay the minimum bet or loses all their money at the end of a round, they lose the match and the game ends."<<endl;
@@ -78,6 +79,7 @@ int main() {
     }
   }
   fin.close();
+
   char newgame = 'Y';
   while (newgame == 'Y') {
     string *deck = new string[52];
@@ -88,7 +90,7 @@ int main() {
 
     build_deck(deck);
     shuffle_deck(deck);
-    
+
     // Retrieve money from txt file
     // player_money = getline (2nd line)
     // int pool = 0;
@@ -103,6 +105,26 @@ int main() {
     //  cout << "You must bet $1000" << endl;
     //  pool += player_money;
     //  player_money = player_money - 1000;
+      string line, mp, mc, moneyp, moneyc;
+      int moneypn, moneycn, pool;
+      ifstream fin;
+      fin.open(name+".txt");
+      getline(fin, name);
+      getline(fin, moneyp);
+      getline(fin, moneyc);
+      cout<<"You currently have $"<<moneyp<<endl;
+      cout << "The minimum bet is $1000" << endl;
+      if (stoi(moneyp) < 1000) {
+        cout << "You must bet all in..." << endl;
+        pool += stoi(moneyp)+1000;
+        moneycn=stoi(moneyc)-1000;
+      }
+      else {
+        cout << "You must bet $1000" << endl;
+        moneypn=stoi(moneyp)-1000;
+        moneycn=stoi(moneyc)-1000;
+        pool=moneypn+moneycn;
+      }
 
     cout << "Your Hand:" << endl;
     add_to_player_deck(player_deck, p_counter, deck);
@@ -248,67 +270,3 @@ int main() {
   cout << endl;
   cout << "Thank you for playing!" << endl;
 }
-
-  // int c = 0;
-  // while (c < c_counter) {
-  //   cout << comp_deck[c];
-  //   if (c < (c_counter-1)) {
-  //     cout << " ";
-  //   }
-  //   c+= 1;
-  // }
-  // cout << endl;
-  // c_hand_value = comp_sum(comp_deck, c_counter);
-  // cout << "Dealer's Hand Value: " << c_hand_value;
-
-
-
-
-  // for (int card=0; card<52; card++) {
-  //   cout<< deck[card] << endl;
-  // }
-
-  // int p_counter = 0;
-  // for (int p_cards=0; p_cards<2; p_cards++) {
-  //   string t = deal_cards(deck);
-  //   player_deck[p_cards] = t;
-  //   p_counter ++;
-  // }
-
-  // int c_counter = 0;
-  // for (int c_cards=0; c_cards<2; c_cards++) {
-  //   string t = deal_cards(deck);
-  //   comp_deck[c_cards] = t;
-  //   c_counter ++;
-  // }
-
-  //string *d_ptr = build_deck(deck);
-  // for (int k=0; k<52; k++) {
-  //   cout << d_ptr[k] << endl;
-  // }
-
-  //string *ds_ptr = shuffle_deck(d_ptr);
-  // for (int x=0; x <52; x++) {
-  //   cout << ds_ptr[x] << endl;
-  // }
-
-  // string t = deal_cards(ds_ptr);
-  // cout << t;
-  //
-  // for (int y=0; y<51; y++) {
-  //   cout << deck[y] << endl;
-  // }
-
-//   string deck[52];
-//   int counter = 0;
-//   string rank[13] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-//   string suit[4] = {"\u2660", "\u2661", "\u2662", "\u2663"};
-//   for (int i=0; i<13; i++) {
-//     for (int j=0; j<4; j++) {
-//       deck[counter] = rank[i] + suit[j];
-//       counter ++;
-//     }
-//   }
-//   for (int k=0; k<52; k++) {
-//     cout << deck[k] << endl;
-//   }
