@@ -125,12 +125,26 @@ int main() {
         moneycn=stoi(moneyc)-1000;
         pool=moneypn+moneycn;
       }
+
       ofstream fout;
       fout.open(name+".txt");
-      while (getline(fin,line)) {
-      line.replace(line.find(moneyp),moneyp.length(),"");
+      fout<<name<<endl;
       fout<<moneypn<<endl;
-    }
+      fout<<moneycn<<endl;
+    //   ofstream fout;
+    //   fout.open(name+".txt");
+    //   while (getline(fin, line)){
+    //     if (line==moneyp){
+    //     line.replace(line.find(moneyp),moneyp.length(), " ");
+    //     fout<<moneyp<<endl;
+    //   }
+    //     if (line==moneyc){
+    //       line.replace(line.find(moneyc), moneyc.length(), " ");
+    //       fout<<moneyc<<endl;
+    //     }
+    // }
+    // fout.close();
+    // fin.close();
 
     cout << "Your Hand:" << endl;
     add_to_player_deck(player_deck, p_counter, deck);
@@ -151,6 +165,17 @@ int main() {
     cout << "Dealer draws 2 cards..." << endl;
     add_to_comp_deck(comp_deck, c_counter, deck);
     add_to_comp_deck(comp_deck, c_counter, deck);
+
+    cout<<"Would you like to raise? (Y) or (N)"<<endl;
+    char raise, raisevalue;
+    if (raise=='Y'){
+      cout<<"How much would you like to raise by?"<<endl;
+      cin>>raisevalue;
+      if (raisevalue<=moneypn){
+        moneypn-=raisevalue;
+        pool+=raisevalue;
+      }
+    }
     // int c = 0;
     // while (c < c_counter) {
     //   cout << comp_deck[c];
