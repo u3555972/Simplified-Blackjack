@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cstdio>
+#include <stdio.h>
 using namespace std;
 int main() {
-  string name;
+  string name, money;
   char saved;
   cout<<"Welcome to Blackjack!"<<endl;
   cout<<"Instructions:"<<endl;
@@ -28,16 +30,28 @@ int main() {
     cout<<"You have a saved game. Do you want to continue (C) or start a new game (N): ";
     cin>>saved;
     if (saved=='C'){
-      ....
+      cout<<"Name: ";
+      fin>>name;
+      cout<<name<<'\n';
+      cout<<"Total money: $";
+      fin>>money;
+      cout<<money<<'\n';
     }
     else if (saved=='N') {
-      cout<<"Yes"<<endl;
+        char n[50];
+        for (int i=0; i<name.length(); ++i){
+          n[i]=name[i];
+        }
+        remove(n);
+      ofstream fout;
+      fout.open(name);
+      fout<<name<<'\n'<<"10000"<<'\n'<<'\n'<<"10000"<<'\n'<<endl;
     }
     else {
       cout<<"Answer invalid. Please try again.";
-      ....
+      cin>>saved;
     }
   }
-
+  fin.close();
 return 0;
 }
