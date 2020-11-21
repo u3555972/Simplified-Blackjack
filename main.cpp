@@ -49,12 +49,13 @@ int main() {
   cout<<"Instructions:"<<endl;
   cout<<"The aim of the game is to get a hand value of 21 or as closest as possible without exceeding it." <<endl;
   cout<<"J, Q, K, are worth 10, while the numbers are worth their own number (e.g. 10 = 10) " << endl;
+  cout<<"A can either be worth 1 or 11<<endl;
   
   cout<<endl;
   cout<<"--------------------------------------------------------------------------------"<<endl;
   cout<<"1) Each player starts with $10,000"<<endl;
   cout<<"2) The minimum betting for each player is $1,000 per match"<<endl;
-  cout<<"3) After recieving the player receives their cards, they may choose to raise their betting amount"<<endl;
+  cout<<"3) After the player receives their cards, they may choose to raise their betting amount"<<endl;
   cout<<"4) After a player raises, the dealer must match the raise and the round commences. If the dealer is unable to match the raise, they lose the round immediately"<<endl;
   cout<<"5) If a round is matched, players can either request another card or reveal their cards"<<endl;
   cout<<"6) If a player cannot pay the minimum bet, they must go all in (use all money)" << endl;
@@ -100,58 +101,45 @@ int main() {
     build_deck(deck);
     shuffle_deck(deck);
 
-    // Retrieve money from txt file
-    // player_money = getline (2nd line)
-    // int pool = 0;
-    // cout << "You currently have: $" << player_money;
-    // cout << endl;
-    // cout << "The minimum bet is $1000 << endl;
-    // if (player_money < 1000) {
-    //  cout << "You must bet all in..." << endl; }
-    //  pool += player_money;
-    //  player_money = 0;
-    // else {
-    //  cout << "You must bet $1000" << endl;
-    //  pool += player_money;
-    //  player_money = player_money - 1000;
-      string line, moneyp, moneyc;
-      int moneypn, moneycn, pool;
-      ifstream fin;
-      fin.open(name+".txt");
-      getline(fin, name);
-      getline(fin, moneyp);
-      if (stoi(moneyp)==0){
-        cout<<"Sorry, you've have no money. You lose the game. Thank you for playing!"<<endl;
-        return 0;
-      }
-      getline(fin, moneyc);
-      if (stoi(moneyc)==0){
-        cout<<"Dealer has no money. You win the game! Thank you for playing!"<<endl;
-        return 0;
-      }
-      fin.close();
+    string line, moneyp, moneyc;
+    int moneypn, moneycn, pool;
+    ifstream fin;
+    fin.open(name+".txt");
+    getline(fin, name);
+    getline(fin, moneyp);
+    if (stoi(moneyp)==0){
+      cout<<"Sorry, you've have no money. You lose the game. Thank you for playing!"<<endl;
+      return 0;
+    }
+    getline(fin, moneyc);
+    if (stoi(moneyc)==0){
+      cout<<"Dealer has no money. You win the game! Thank you for playing!"<<endl;
+      return 0;
+    }
+    fin.close();
 
-      cout << "You currently have $"<<moneyp<<endl;
-      cout << "The minimum bet is $1000" << endl;
-      if (stoi(moneyp) < 1000) {
-        cout << "You must bet all in..." << endl;
-        moneycn=stoi(moneyc)-1000;
-        pool = stoi(moneyp) + stoi(moneyc);
-      }
-      else {
-        cout << "You must bet $1000" << endl;
-        moneypn=stoi(moneyp)-1000;
-        moneycn=stoi(moneyc)-1000;
-        pool=2000;
-      }
+    cout << "You currently have $"<<moneyp<<endl;
+    cout<<"The dealer currently has $"<<moneyc<<endl;
+    cout << "The minimum bet is $1000" << endl;
+    if (stoi(moneyp) < 1000) {
+      cout << "You must bet all in..." << endl;
+      moneycn=stoi(moneyc)-1000;
+      pool = stoi(moneyp) + stoi(moneyc);
+    }
+    else {
+      cout << "You must bet $1000" << endl;
+      moneypn=stoi(moneyp)-1000;
+      moneycn=stoi(moneyc)-1000;
+      pool=2000;
+    }
 
-      ofstream fout;
-      fout.open(name+".txt");
-      fout<<name<<endl;
-      fout<<moneypn<<endl;
-      fout<<moneycn<<endl;
-      fout.close();
-
+    ofstream fout;
+    fout.open(name+".txt");
+    fout<<name<<endl;
+    fout<<moneypn<<endl;
+    fout<<moneycn<<endl;
+    fout.close();
+    
     cout << endl;
     cout << "Your Hand:" << endl;
     add_to_player_deck(player_deck, p_counter, deck);
