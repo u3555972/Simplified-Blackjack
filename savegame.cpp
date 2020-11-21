@@ -19,7 +19,7 @@ void displaycurrent(string name){
   cout<<name<<endl;
   cout<<"Total money: $";
   fin>>moneyp;
-  cout<<moneyp<<'\n';
+  cout<<moneyp;
   cout << endl;
   cout<<"The Dealer has $";
   fin>>moneyc;
