@@ -281,7 +281,7 @@ int main() {
         fout<<moneycn<<endl;
         fout.close();
       }
-      else {
+      else if (wl=='l') {
         moneycn+=pool;
         ofstream fout;
         fout.open(name+".txt");
@@ -289,6 +289,9 @@ int main() {
         fout<<moneypn<<endl;
         fout<<moneycn<<endl;
         fout.close();
+      }
+      else {
+        pool=0;
       }
       cout << endl;
     }
