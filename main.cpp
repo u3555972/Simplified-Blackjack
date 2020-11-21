@@ -13,11 +13,12 @@ void displaycurrent(string name){
   fin.open(name+".txt");
   cout<<"Name: ";
   fin>>name;
-  cout<<name<<'\n';
-  cout<<"Total money: $";
+  cout<<name<<endl;
+  //cout<<"Total money: $";
   fin>>moneyp;
-  cout<<moneyp<<'\n';
-  cout<<"The computer has $";
+  //cout<<moneyp<<'\n';
+  cout << endl;
+  cout<<"The Dealer has $";
   fin>>moneyc;
   cout<<moneyc<<endl;
   fin.close();
@@ -113,7 +114,8 @@ int main() {
       getline(fin, moneyp);
       getline(fin, moneyc);
       fin.close();
-      cout<<"You currently have $"<<moneyp<<endl;
+
+      cout << "You currently have $"<<moneyp<<endl;
       cout << "The minimum bet is $1000" << endl;
       if (stoi(moneyp) < 1000) {
         cout << "You must bet all in..." << endl;
@@ -134,6 +136,7 @@ int main() {
       fout<<moneycn<<endl;
       fout.close();
 
+    cout << endl;
     cout << "Your Hand:" << endl;
     add_to_player_deck(player_deck, p_counter, deck);
     add_to_player_deck(player_deck, p_counter, deck);
@@ -154,18 +157,21 @@ int main() {
     add_to_comp_deck(comp_deck, c_counter, deck);
     add_to_comp_deck(comp_deck, c_counter, deck);
 
-    cout<<"Would you like to raise? (Y) or (N)"<<endl;
     char raise;
     int raisevalue;
-    cin>>raise;
+    cout << endl;
+    cout << "Would you like to raise (Y/N)?: ";
+    cin >> raise;
+    cout << endl;
     if (raise=='Y'){
-      cout<<"How much would you like to raise by?"<<endl;
+      cout<<"How much would you like to raise by?: ";
       cin>>raisevalue;
       if (raisevalue<=moneypn){
         moneypn-=raisevalue;
         pool+=raisevalue;
         if (raisevalue>=moneycn){
-          cout<<"The computer goes all in."<<endl;
+          cout << endl;
+          cout<<"The computer goes all in..."<<endl;
           moneycn-=stoi(moneyc);
           pool+=stoi(moneyc);
         }
@@ -175,7 +181,7 @@ int main() {
         }
       }
       else {
-        cout<<"You do not have enough money! Please try again.";
+        cout<<"You do not have enough money! Please try again: ";
         cin>>raisevalue;
       }
       ofstream fout;
@@ -221,6 +227,7 @@ int main() {
         cout << "Do you want to draw a card (hit) (Y/N)?: ";
         cin >> decision;
         if (decision == 'Y') {
+          cout << endl;
           cout << "Your Hand: " << endl;
           add_to_player_deck(player_deck, p_counter, deck);
           int p = 0;
@@ -234,6 +241,7 @@ int main() {
           int p_hand_value = player_sum(player_deck, p_counter);
           cout << endl;
           cout << "Hand Value: " << p_hand_value << endl;
+          cout << endl;
           //cout << p_hand_value << endl;
           if (p_hand_value > 21) {
             cout << "Busted! You lose..." << endl;
