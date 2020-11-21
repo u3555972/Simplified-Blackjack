@@ -123,4 +123,5 @@ char determine_w_l(int p_hand_value, int c_hand_value) {
     cout << "Both hands tie!" << endl;
     return 't';
   }
+  return 0;
 }
