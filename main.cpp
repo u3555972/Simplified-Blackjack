@@ -68,6 +68,13 @@ int main() {
   else {
     cout<<"You have a saved game. Do you want to continue (C) or overwrite and start a new game (N): ";
     cin>>saved;
+    while (saved!='C' && saved!='N'){
+      cout<<"Answer invalid. You have a saved game. Do you want to continue (C) or overwrite and start a new game (N): ";
+      cin>>saved;
+      if (saved=='C' || saved=='N'){
+        break;
+      }
+    }
     if (saved=='C'){
       displaycurrent(name);
     }
@@ -171,6 +178,13 @@ int main() {
     cout << "Would you like to raise (Y/N)?: ";
     cin >> raise;
     cout << endl;
+    while (raise!='Y' && raise!='N'){
+      cout<<"Answer invalid. Would you like to raise (Y/N)?: ";
+      cin>>raise;
+      if (raise=='Y' || raise=='N'){
+        break;
+      }
+    }
     if (raise=='Y'){
       cout<<"How much would you like to raise by?: ";
       cin>>raisevalue;
@@ -239,6 +253,13 @@ int main() {
       while (decision == 'Y') {
         cout << "Do you want to draw a card (hit) (Y/N)?: ";
         cin >> decision;
+        while (decision!='Y' && decision!='N'){
+          cout<<"Answer invalid. Do you want to draw a card (hit) (Y/N)?: ";
+          cin>>decision;
+          if (decision=='Y' || decision=='N'){
+            break;
+          }
+        }
         if (decision == 'Y') {
           cout << endl;
           cout << "Your Hand: " << endl;
@@ -357,6 +378,13 @@ int main() {
     }
     cout << "Do you want to play again (Y/N)?: ";
     cin >> newgame;
+    while (newgame!='Y' && newgame!='N'){
+      cout<<"Answer invalid. Do you want to play again (Y/N)?: ";
+      cin>>newgame;
+      if (newgame=='Y' || newgame=='N'){
+        break;
+      }
+    }
   }
   cout << endl;
   cout << "Thank you for playing!" << endl;
