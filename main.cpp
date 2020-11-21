@@ -121,12 +121,13 @@ int main() {
       }
       getline(fin, moneyc);
       if (stoi(moneyc)==0){
-        cout<<"Computer has no money. You win the game! Thank you for playing!"<<endl;
+        cout<<"Dealer has no money. You win the game! Thank you for playing!"<<endl;
         return 0;
       }
       fin.close();
 
       cout << "You currently have $"<<moneyp<<endl;
+      cout<<"The dealer currently has $"<<moneyc<<endl;
       cout << "The minimum bet is $1000" << endl;
       if (stoi(moneyp) < 1000) {
         cout << "You must bet all in..." << endl;
