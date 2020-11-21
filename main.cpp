@@ -49,7 +49,7 @@ int main() {
   cout<<"Instructions:"<<endl;
   cout<<"The aim of the game is to get a hand value of 21 or as closest as possible without exceeding it." <<endl;
   cout<<"J, Q, K, are worth 10, while the numbers are worth their own number (e.g. 10 = 10) " << endl;
-  cout<<"A can either be worth 1 or 11<<endl;
+  cout<<"A can either be worth 1 or 11"<<endl;
   
   cout<<endl;
   cout<<"--------------------------------------------------------------------------------"<<endl;
