@@ -53,3 +53,4 @@ Once one of the players loses all his/her money after round(s), they lose, and t
 3) In the terminal, type: make game
 4) After it is made, type: ./game
 5) Enjoy the game!
+6) Anytime you want to play the game, simply type: ./game
