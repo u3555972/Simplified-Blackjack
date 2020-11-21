@@ -50,6 +50,6 @@ Once one of the players loses all his/her money after round(s), they lose, and t
 
 1) Download the zip and unzip
 2) Open terminal and make sure it's in the same directory with all the files
-3) In the terminal, type make game (only need to do this once)
+3) In the terminal, type: make game
 4) After it is made, type: ./game
 5) Enjoy the game!
