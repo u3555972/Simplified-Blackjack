@@ -167,6 +167,8 @@ int main() {
       else if (raisevalue > moneypn){ // failsafe
         cout<<"You do not have enough money! Please try again: ";
         cin>>raisevalue;
+        pool += raisevalue;
+        moneypn -= raisevalue;
       }
       ofstream fout;
       fout.open(name+".txt");
