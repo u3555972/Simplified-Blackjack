@@ -32,7 +32,7 @@ int main() {
   //check if file exists
   ifstream fin;
   fin.open(name+".txt");
-  //if it doesnt, create a new file
+  //if it doesnt exist, create a new file
   if (fin.fail()){
     newg(name);
   }
@@ -46,10 +46,10 @@ int main() {
         break;
       }
     }
-    if (saved=='C'){
+    if (saved=='C'){ //displays contents of the file
       displaycurrent(name);
     }
-    else if (saved=='N') {
+    else if (saved=='N') {//creates a new file with original amount of money
       newg(name);
     }
   }
