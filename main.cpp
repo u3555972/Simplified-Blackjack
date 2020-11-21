@@ -81,10 +81,6 @@ int main() {
     else if (saved=='N') {
       newg(name);
     }
-    else {
-      cout<<"Answer invalid. Please try again.";
-      cin>>saved;
-    }
   }
   fin.close();
 
@@ -175,6 +171,7 @@ int main() {
     char raise;
     int raisevalue;
     cout << endl;
+    if (moneypn>0) {
     cout << "Would you like to raise (Y/N)?: ";
     cin >> raise;
     cout << endl;
@@ -192,17 +189,18 @@ int main() {
         moneypn-=raisevalue;
         pool+=raisevalue;
         if (moneycn<=0) {
-          cout<<"Computer doesn't have enough money. You win the game. Thank you for playing!"<<endl;
+          cout<<"Dealer doesn't have enough money. You win the game. Thank you for playing!"<<endl;
           return 0;
         }
         else if (raisevalue>=moneycn && moneycn>0){
           cout << endl;
-          cout<<"The computer goes all in..."<<endl;
+          cout<<"The dealer goes all in..."<<endl;
           pool += moneycn;
           moneycn=0;
           //pool+=stoi(moneyc);
         }
         else {
+          cout<<"The dealer matches your raise."<<endl;
           moneycn-=raisevalue;
           pool+=raisevalue;
         }
@@ -218,6 +216,7 @@ int main() {
       fout<<moneycn<<endl;
       fout.close();
     }
+  }
     cout<<"The current pool is: $"<<pool<<endl;
     // int c = 0;
     // while (c < c_counter) {
@@ -235,19 +234,6 @@ int main() {
     if (p_hand_value > 21) {
       cout << "Busted! You lose..." << endl;
     }
-
-    else if (p_hand_value == 21) {
-      cout << "Blackjack! You win!" << endl;
-    }
-
-    else if (c_hand_value == 21) {
-      cout << "Dealer has a Blackjack! You lose..." << endl;
-    }
-
-    else if (c_hand_value > 21) {
-      cout << "Dealer busted! You win!" << endl;
-    }
-
     else {
       char decision = 'Y';
       while (decision == 'Y') {
