@@ -1,0 +1,50 @@
+Welcome to Blackjack!
+Instructions:
+The aim of the game is to get a hand value of 21 or as closest as possible without exceeding it.
+J, Q, K, are worth 10, while the numbers are worth their own number (e.g. 10 = 10) 
+A can either be worth 1 or 11
+
+--------------------------------------------------------------------------------
+1) Each player starts with $10,000
+2) The minimum betting for each player is $1,000 per match
+3) After the player receives their cards, they may choose to raise their betting amount
+4) After a player raises, the dealer must match the raise and the round commences. If the dealer is unable to match the raise, they lose the round immediately
+5) If a round is matched, players can either request another card or reveal their cards
+6) If a player cannot pay the minimum bet, they must go all in (use all money)
+7) If the player loses money at the end of a round, they lose the game!
+--------------------------------------------------------------------------------
+
+What is your name?: 
+Your current game:
+Name: Aashana
+Total money: $10000
+The Dealer has $10000
+
+You currently have $10000
+The dealer currently has $10000
+The minimum bet is $1000
+You must bet $1000
+
+Your Hand:
+8♣ K♣
+Hand Value: 18
+
+Dealer draws 2 cards...
+
+Would you like to raise (Y/N)?: 
+Answer invalid. Would you like to raise (Y/N)?: How much would you like to raise by?: 
+The dealer goes all in...
+The current pool is: $20000
+
+Do you want to draw a card (hit) (Y/N)?: Answer invalid. Do you want to draw a card (hit) (Y/N)?: Answer invalid. Do you want to draw a card (hit) (Y/N)?: 
+Your Hand: 
+8♣ K♣ Q♢
+Hand Value: 28
+
+Busted! You lose...
+
+Dealer's Hand:
+2♠ 8♠
+Dealer's Hand Value: 10
+
+You have no more money. You lose the game.!
