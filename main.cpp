@@ -127,7 +127,6 @@ int main() {
       fin.close();
 
       cout << "You currently have $"<<moneyp<<endl;
-      cout<<"The dealer currently has $"<<moneyc<<endl;
       cout << "The minimum bet is $1000" << endl;
       if (stoi(moneyp) < 1000) {
         cout << "You must bet all in..." << endl;
