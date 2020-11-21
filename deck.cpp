@@ -112,4 +112,8 @@ char determine_w_l(int p_hand_value, int c_hand_value) {
     cout << "You lose..." << endl;
     return 'l';
   }
+  else if (c_hand_value == p_hand_value || p_hand_value == c_hand_value) {
+    cout << "Your hand of " << p_hand_value << " is equal to Dealer's hand of " << c_hand_value << endl;
+    cout << "Both hands tie!" << endl;
+  }
 }
