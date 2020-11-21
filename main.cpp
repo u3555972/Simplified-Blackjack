@@ -33,12 +33,12 @@ void newg(string name){
   n[name.length()+1]='t';
   n[name.length()+2]='x';
   n[name.length()+3]='t';
-  remove(n);
+  remove(n); //deletes existing saved game
   ofstream fout;
   fout.open(name+".txt");
   fout<<name<<'\n'<<"10000"<<'\n'<<"10000"<<'\n'<<endl;
   fout.close();
-  displaycurrent(name);
+  displaycurrent(name); //displays the file contents
 }
 
 int main() {
@@ -112,18 +112,19 @@ int main() {
       getline(fin, name);
       getline(fin, moneyp);
       getline(fin, moneyc);
+      fin.close();
       cout<<"You currently have $"<<moneyp<<endl;
       cout << "The minimum bet is $1000" << endl;
       if (stoi(moneyp) < 1000) {
         cout << "You must bet all in..." << endl;
-        pool += stoi(moneyp);
-        moneycn=stoi(moneyc);
+        pool += stoi(moneyp)+1000;
+        moneycn=stoi(moneyc)-1000;
       }
       else {
         cout << "You must bet $1000" << endl;
         moneypn=stoi(moneyp)-1000;
         moneycn=stoi(moneyc)-1000;
-        pool=moneypn+moneycn;
+        pool=2000;
       }
 
       ofstream fout;
@@ -131,20 +132,7 @@ int main() {
       fout<<name<<endl;
       fout<<moneypn<<endl;
       fout<<moneycn<<endl;
-    //   ofstream fout;
-    //   fout.open(name+".txt");
-    //   while (getline(fin, line)){
-    //     if (line==moneyp){
-    //     line.replace(line.find(moneyp),moneyp.length(), " ");
-    //     fout<<moneyp<<endl;
-    //   }
-    //     if (line==moneyc){
-    //       line.replace(line.find(moneyc), moneyc.length(), " ");
-    //       fout<<moneyc<<endl;
-    //     }
-    // }
-    // fout.close();
-    // fin.close();
+      fout.close();
 
     cout << "Your Hand:" << endl;
     add_to_player_deck(player_deck, p_counter, deck);
@@ -166,16 +154,38 @@ int main() {
     add_to_comp_deck(comp_deck, c_counter, deck);
     add_to_comp_deck(comp_deck, c_counter, deck);
 
-    cout<<"Would you like to raise (Y/N)?: "<<endl;
-    char raise, raisevalue;
+    cout<<"Would you like to raise? (Y) or (N)"<<endl;
+    char raise;
+    int raisevalue;
+    cin>>raise;
     if (raise=='Y'){
-      cout<<"How much would you like to raise by?: "<<endl;
+      cout<<"How much would you like to raise by?"<<endl;
       cin>>raisevalue;
       if (raisevalue<=moneypn){
         moneypn-=raisevalue;
         pool+=raisevalue;
+        if (raisevalue>=moneycn){
+          cout<<"The computer goes all in."<<endl;
+          moneycn-=stoi(moneyc);
+          pool+=stoi(moneyc);
+        }
+        else {
+          moneycn-=raisevalue;
+          pool+=raisevalue;
+        }
       }
+      else {
+        cout<<"You do not have enough money! Please try again.";
+        cin>>raisevalue;
+      }
+      ofstream fout;
+      fout.open(name+".txt");
+      fout<<name<<endl;
+      fout<<moneypn<<endl;
+      fout<<moneycn<<endl;
+      fout.close();
     }
+
     // int c = 0;
     // while (c < c_counter) {
     //   cout << comp_deck[c];
@@ -187,7 +197,6 @@ int main() {
     // cout << endl;
     int c_hand_value = comp_sum(comp_deck, c_counter);
     cout << endl;
-    
 
     bool skip = true, busted = false;
     if (p_hand_value > 21) {
@@ -227,6 +236,13 @@ int main() {
           //cout << p_hand_value << endl;
           if (p_hand_value > 21) {
             cout << "Busted! You lose..." << endl;
+            moneycn+=pool;
+            ofstream fout;
+            fout.open(name+".txt");
+            fout<<name<<endl;
+            fout<<moneypn<<endl;
+            fout<<moneycn<<endl;
+            fout.close();
             decision = 'N';
             skip = false;
             busted = true;
@@ -254,7 +270,25 @@ int main() {
       c_hand_value = comp_sum(comp_deck, c_counter);
       cout << "Dealer's Hand Value: " << c_hand_value << endl;
       cout << endl;
-      determine_w_l(p_hand_value, c_hand_value);
+      char wl=determine_w_l(p_hand_value, c_hand_value);
+      if (wl=='w'){
+        moneypn+=pool;
+        ofstream fout;
+        fout.open(name+".txt");
+        fout<<name<<endl;
+        fout<<moneypn<<endl;
+        fout<<moneycn<<endl;
+        fout.close();
+      }
+      else {
+        moneycn+=pool;
+        ofstream fout;
+        fout.open(name+".txt");
+        fout<<name<<endl;
+        fout<<moneypn<<endl;
+        fout<<moneycn<<endl;
+        fout.close();
+      }
       cout << endl;
     }
 
