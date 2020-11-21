@@ -9,6 +9,6 @@ void add_to_player_deck(std::string *player_deck, int &p_counter, std::string *d
 void add_to_comp_deck(std::string *comp_deck, int &c_counter, std::string *deck);
 int player_sum(std::string *player_deck, int &p_counter);
 int comp_sum(std::string *comp_deck, int &c_counter);
-void determine_w_l(int p_hand_value, int c_hand_value);
+char determine_w_l(int p_hand_value, int c_hand_value);
 
 #endif
