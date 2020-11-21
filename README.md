@@ -1,17 +1,20 @@
-# C++ Blackjack
-C++ Blackjack program for COMP2113 Project.
+# C++ Simplified Blackjack
+C++ Simplified Blackjack program for COMP2113 Project.
 
 **Chan, Cheuk Hang (3035559725)**
 
 **Shah, Aashana Chetan (3035552155)**
 
-**Game Description: Blackjack**
+**Game Description: Simplified Blackjack**
 
-The goal of the game is to try to get as close as possible to the number 21, inclusively. To do this, each player will be dealt 2 regular cards (2 - A). J, Q, K are all worth 10 while A can be 1 or 11. The rest of the numbers represent its own number. The sum of the points is how much the hand is worth. At the beginning of each round, the player can ask for 1 more card to improve their hand or they can “stay”, keeping their hand. The player closes to 21 wins! If the player exceeds 21, then they are “busted” (loses match). If both player and dealers are tied, none of them receives the money and it goes to the "House".
+The goal of the game is to try to get as close as possible to the number 21, inclusively. To do this, each player will be dealt 2 regular cards (2 - A). J, Q, K are all worth 10 while A can be 1 or 11. The rest of the numbers represent its own number. The sum of the points is how much the hand is worth. At the beginning of each round, the player can ask for 1 more card to improve their hand or they can “stay”, keeping their hand. The player closes to 21 wins a round! If the player exceeds 21, then they are “busted” (loses match). If both player and dealers are tied, none of them receives the money and it goes to the "House". The players can choose to continue after a round or stop. Once they stop, the money will be saved.
 
 Each player (including 1 opponent) starts with $10,000. Each match’s minimum betting from each player is $1,000. After the player receives their initial cards, they can “raise” to bet more money. The dealer will always match the raised amount, then the round commences. However, if a player cannot pay the minimum or match because they do not have enough money, they must use all their remaining money. Same goes for the dealer.
 
-Once one of the players loses all his/her money after a match, they lose. Then, the game ends. The player can choose to restart.
+
+Once one of the players loses all his/her money after round(s), they lose, and the game ends.
+
+**Coding Requirements**
 
 1) Generation of random game sets or events <br />
     - Random shuffle of the stored cards will occur so as to deal the cards randomly. <br />
@@ -33,6 +36,7 @@ Once one of the players loses all his/her money after a match, they lose. Then, 
     - Program loads save file for a user under their name (Input)<br />
         - Save file stores include how much money they have (both player and dealer)<br />
         - Loads that amount of money to start the game<br />
+    - Once a player stops playing the game, then the game saves amount of money left from both sides <br />
 5) Program codes in multiple files<br />
     - File #1: Main Display<br />
         - Basically prints out the introduction to the game<br />
