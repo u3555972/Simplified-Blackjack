@@ -164,7 +164,7 @@ int main() {
           pool+=raisevalue;
         }
       }
-      else if (raisevalue > moneypn){ // failsafe
+      while (raisevalue > moneypn){ // failsafe
         cout<<"You do not have enough money! Please try again: ";
         cin>>raisevalue;
         pool += raisevalue;
