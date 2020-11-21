@@ -45,3 +45,11 @@ Once one of the players loses all his/her money after round(s), they lose, and t
         - Constructs, shuffles, distribute deck to players and calculates the value of each hand
     - File #3: New user<br />
         - If user is new, create a new file with user’s name and give them $10,000<br />
+
+**Compile and Execution**
+
+1) Download the zip and unzip
+2) Open terminal and make sure it's in the same directory with all the files
+3) In the terminal, type make game (only need to do this once)
+4) After it is made, type: ./game
+5) Enjoy the game!
