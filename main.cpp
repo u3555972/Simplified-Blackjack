@@ -204,7 +204,7 @@ int main() {
       fout<<moneycn<<endl;
       fout.close();
     }
-
+    cout<<"The current pool is: $"<<pool<<endl;
     // int c = 0;
     // while (c < c_counter) {
     //   cout << comp_deck[c];
