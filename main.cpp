@@ -221,6 +221,7 @@ int main() {
         cout << "Do you want to draw a card (hit) (Y/N)?: ";
         cin >> decision;
         if (decision == 'Y') {
+          cout << "Your Hand: " << endl;
           add_to_player_deck(player_deck, p_counter, deck);
           int p = 0;
           while (p < p_counter) {
