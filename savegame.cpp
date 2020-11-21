@@ -11,18 +11,20 @@ void displaycurrent(string name){
   //prints name and total money of player and computer
   //input of the string name such that name.txt can be opened
   //output name, amount of money player has and amount of money dealer has
+  cout<<"Your current game:"<<endl;
   ifstream fin;
   fin.open(name+".txt");
   cout<<"Name: ";
   fin>>name;
   cout<<name<<endl;
-  //cout<<"Total money: $";
+  cout<<"Total money: $";
   fin>>moneyp;
-  //cout<<moneyp<<'\n';
+  cout<<moneyp<<'\n';
   cout << endl;
   cout<<"The Dealer has $";
   fin>>moneyc;
   cout<<moneyc<<endl;
+  cout<<endl;
   fin.close();
 }
 
