@@ -64,7 +64,7 @@ int player_sum(string *player_deck, int &p_counter) {
     else if (temp_deck[value] == "A") {
       value_deck += 11; // A can be 11
       if (value_deck > 21) {
-        value_deck -= 10;
+        value_deck -= 10; // A can also take on 1
       }
     }
     else {
@@ -87,6 +87,9 @@ int comp_sum(string *comp_deck, int &c_counter) {
     }
     else if (temp_deck[value] == "A") {
       value_deck += 11; // A can be 11
+      if (value_deck > 21) {
+        value_deck -= 10; // A can also take on 1
+      }
     }
     else {
       value_deck += stoi(temp_deck[value]); // Everything else is simply the value of the rank
