@@ -57,4 +57,4 @@ Once one of the players loses all his/her money after round(s), they lose, and t
 
 **Problem Statement**
 
-For this program, we assume that users will mostly input the correct values needed. However, we have made some failsafes. For example, if the user raises more money than he/she has, it will not allow it. However, as for the difference in integer inputs and char inputs, the user must put in either a integer or character respectively. Either way, we assume that the user will generally input the correct input.
+For this program, we assume that users will mostly input the correct values needed. However, we have made some failsafes. For example, if the user raises more money than he/she has, it will not allow it. However, as for the difference in integer inputs and char inputs, the user must put in either a integer or character respectively. Either way, we assume that the user will generally input the correct input. Since we are also creating the txt files, we do not expect any other txt files to be there.
