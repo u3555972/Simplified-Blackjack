@@ -127,8 +127,8 @@ int main() {
       cout << "The minimum bet is $1000" << endl;
       if (stoi(moneyp) < 1000) {
         cout << "You must bet all in..." << endl;
-        pool += stoi(moneyp)+1000;
         moneycn=stoi(moneyc)-1000;
+        pool = stoi(moneyp) + stoi(moneyc);
       }
       else {
         cout << "You must bet $1000" << endl;
@@ -184,15 +184,16 @@ int main() {
         else if (raisevalue>=moneycn && moneycn>0){
           cout << endl;
           cout<<"The computer goes all in..."<<endl;
-          moneycn-=stoi(moneyc);
-          pool+=stoi(moneyc);
+          pool += moneycn;
+          moneycn=0;
+          //pool+=stoi(moneyc);
         }
         else {
           moneycn-=raisevalue;
           pool+=raisevalue;
         }
       }
-      else {
+      else if (raisevalue > moneypn){
         cout<<"You do not have enough money! Please try again: ";
         cin>>raisevalue;
       }
