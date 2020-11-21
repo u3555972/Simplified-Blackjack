@@ -144,6 +144,13 @@ int main() {
     if (raise=='Y'){
       cout<<"How much would you like to raise by?: ";
       cin>>raisevalue;
+      while (raisevalue > moneypn){ // failsafe
+        cout<<"You do not have enough money! Please try again: ";
+        cin>>raisevalue;
+        if (raisevalue <= moneypn){
+          break;
+        }
+      }
       if (raisevalue<=moneypn){
         moneypn-=raisevalue;
         pool+=raisevalue;
@@ -162,15 +169,6 @@ int main() {
           cout<<"The dealer matches your raise."<<endl;
           moneycn-=raisevalue;
           pool+=raisevalue;
-        }
-      }
-      while (raisevalue > moneypn){ // failsafe
-        cout<<"You do not have enough money! Please try again: ";
-        cin>>raisevalue;
-        if (raisevalue <= moneypn){
-          pool += raisevalue;
-          moneypn -= raisevalue;
-          break;
         }
       }
       ofstream fout;
