@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <sstream>
 #include "deck.h"
+#include "savegame.h"
 using namespace std;
 
 void displaycurrent(string name){
@@ -74,7 +75,7 @@ int main() {
   else {
     cout<<"You have a saved game. Do you want to continue (C) or overwrite and start a new game (N): ";
     cin>>saved;
-    while (saved!='C' && saved!='N'){
+    while (saved!='C' && saved!='N'){ //loops until a valid answer is given
       cout<<"Answer invalid. You have a saved game. Do you want to continue (C) or overwrite and start a new game (N): ";
       cin>>saved;
       if (saved=='C' || saved=='N'){
