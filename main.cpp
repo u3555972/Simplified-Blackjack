@@ -373,6 +373,10 @@ int main() {
       }
     }
   }
+    else if (moneypn<0){
+    cout<<"You have no more money. You lose the game.!"<<endl;
+    return 0;
+  }
   else {
     cout<<"Dealer has no money left. You win the game!"<<endl;
     return 0;
