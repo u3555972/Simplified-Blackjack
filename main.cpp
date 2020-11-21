@@ -167,10 +167,11 @@ int main() {
       while (raisevalue > moneypn){ // failsafe
         cout<<"You do not have enough money! Please try again: ";
         cin>>raisevalue;
-        if (raisevalue <= moneypn) 
+        if (raisevalue <= moneypn){
           pool += raisevalue;
           moneypn -= raisevalue;
           break;
+        }
       }
       ofstream fout;
       fout.open(name+".txt");
