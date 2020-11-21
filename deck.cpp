@@ -93,19 +93,23 @@ int comp_sum(string *comp_deck, int &c_counter) {
 }
 
 // Function to determine who won
-void determine_w_l(int p_hand_value, int c_hand_value) {
+char determine_w_l(int p_hand_value, int c_hand_value) {
   if (p_hand_value == 21) { // Getting 21 automatically wins
     cout << "Blackjack! You win..." << endl;
+    return 'w';
   }
   else if (p_hand_value > c_hand_value) {
     cout << "Your hand of " << p_hand_value << " is greater than the Dealer's hand of " << c_hand_value << endl; // If player value > comp_value, then player wins
     cout << "You Win!" << endl;
+    return 'w';
   }
   else if (c_hand_value > 21) {
     cout << "Dealer busted! You win!" << endl; // If dealer gets above 21, dealer is "busted" (loses)
+    return 'w';
   }
   else if (c_hand_value > p_hand_value) {
     cout << "The Dealer's hand of " << c_hand_value << " is greater than your hand of " << p_hand_value << endl; // If comp_value > player value, then comp wins
     cout << "You lose..." << endl;
+    return 'l';
   }
 }
