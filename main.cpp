@@ -29,6 +29,7 @@ int main() {
   cout<<endl;
   cout<<"What is your name?: ";
   cin>>name;
+  cout<<endl;
   //check if file exists
   ifstream fin;
   fin.open(name+".txt");
