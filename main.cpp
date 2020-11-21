@@ -112,7 +112,15 @@ int main() {
       fin.open(name+".txt");
       getline(fin, name);
       getline(fin, moneyp);
+      if (stoi(moneyp)==0){
+        cout<<"Sorry, you've have no money. You lose the game. Thank you for playing!"<<endl;
+        return 0;
+      }
       getline(fin, moneyc);
+      if (stoi(moneyc)==0){
+        cout<<"Computer has no money. You win the game! Thank you for playing!"<<endl;
+        return 0;
+      }
       fin.close();
 
       cout << "You currently have $"<<moneyp<<endl;
@@ -169,7 +177,11 @@ int main() {
       if (raisevalue<=moneypn){
         moneypn-=raisevalue;
         pool+=raisevalue;
-        if (raisevalue>=moneycn){
+        if (moneycn<=0) {
+          cout<<"Computer doesn't have enough money. You win the game. Thank you for playing!"<<endl;
+          return 0;
+        }
+        else if (raisevalue>=moneycn && moneycn>0){
           cout << endl;
           cout<<"The computer goes all in..."<<endl;
           moneycn-=stoi(moneyc);
