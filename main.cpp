@@ -7,42 +7,6 @@
 #include "savegame.h"
 using namespace std;
 
-void displaycurrent(string name){
-  string moneyp, moneyc;
-  //prints name and total money of player and computer
-  ifstream fin;
-  fin.open(name+".txt");
-  cout<<"Name: ";
-  fin>>name;
-  cout<<name<<endl;
-  //cout<<"Total money: $";
-  fin>>moneyp;
-  //cout<<moneyp<<'\n';
-  cout << endl;
-  cout<<"The Dealer has $";
-  fin>>moneyc;
-  cout<<moneyc<<endl;
-  fin.close();
-}
-
-void newg(string name){
-  //new game opens deletes originally saved game and gives computer $10000
-  char n[50];
-  for (int i=0; i<name.length(); ++i){
-    n[i]=name[i];
-  }
-  n[name.length()]='.';
-  n[name.length()+1]='t';
-  n[name.length()+2]='x';
-  n[name.length()+3]='t';
-  remove(n); //deletes existing saved game
-  ofstream fout;
-  fout.open(name+".txt");
-  fout<<name<<'\n'<<"10000"<<'\n'<<"10000"<<'\n'<<endl;
-  fout.close();
-  displaycurrent(name); //displays the file contents
-}
-
 int main() {
   string name, money;
   char saved;
@@ -93,26 +57,26 @@ int main() {
 
   char newgame = 'Y';
   while (newgame == 'Y') {
-    string *deck = new string[52];
-    string *player_deck = new string[5];
-    string *comp_deck = new string [5];
-    int p_counter = 0;
-    int c_counter = 0;
+    string *deck = new string[52]; // Initialize a dynamic deck to append things to it and also for constant updating
+    string *player_deck = new string[5]; // Initialize player deck to add to it and for constant updating
+    string *comp_deck = new string [5]; // Initialize comp (dealer's deck) to add to deck and for constant updating
+    int p_counter = 0; // Counter for player
+    int c_counter = 0; // Counter for comp (dealer)
 
-    build_deck(deck);
-    shuffle_deck(deck);
+    build_deck(deck); // builds deck
+    shuffle_deck(deck); // shuffle's deck
 
     string line, moneyp, moneyc;
     int moneypn, moneycn, pool;
     ifstream fin;
     fin.open(name+".txt");
     getline(fin, name);
-    getline(fin, moneyp);
+    getline(fin, moneyp); // gets player money
     if (stoi(moneyp)==0){
       cout<<"Sorry, you've have no money. You lose the game. Thank you for playing!"<<endl;
       return 0;
     }
-    getline(fin, moneyc);
+    getline(fin, moneyc); // gets comp money
     if (stoi(moneyc)==0){
       cout<<"Dealer has no money. You win the game! Thank you for playing!"<<endl;
       return 0;
@@ -122,7 +86,7 @@ int main() {
     cout << "You currently have $"<<moneyp<<endl;
     cout<<"The dealer currently has $"<<moneyc<<endl;
     cout << "The minimum bet is $1000" << endl;
-    if (stoi(moneyp) < 1000) {
+    if (stoi(moneyp) < 1000) { // if below min bet, must bet everything
       cout << "You must bet all in..." << endl;
       moneycn=stoi(moneyc)-1000;
       pool = stoi(moneyp) + stoi(moneyc);
@@ -143,23 +107,23 @@ int main() {
     
     cout << endl;
     cout << "Your Hand:" << endl;
-    add_to_player_deck(player_deck, p_counter, deck);
+    add_to_player_deck(player_deck, p_counter, deck); // Adds player deck
     add_to_player_deck(player_deck, p_counter, deck);
     int p = 0;
-    while (p < p_counter) {
+    while (p < p_counter) { // loop prints out player deck
       cout << player_deck[p];
       if (p < (p_counter-1)) {
         cout << " ";
       }
       p += 1;
     }
-    int p_hand_value = player_sum(player_deck, p_counter);
+    int p_hand_value = player_sum(player_deck, p_counter); // gets the value of player
     cout << endl;
     cout << "Hand Value: " << p_hand_value << endl;
     cout << endl;
 
     cout << "Dealer draws 2 cards..." << endl;
-    add_to_comp_deck(comp_deck, c_counter, deck);
+    add_to_comp_deck(comp_deck, c_counter, deck); // Adds cards to comp deck
     add_to_comp_deck(comp_deck, c_counter, deck);
 
     char raise;
@@ -170,7 +134,7 @@ int main() {
     cin >> raise;
     cout << endl;
     while (raise!='Y' && raise!='N'){
-      cout<<"Answer invalid. Would you like to raise (Y/N)?: ";
+      cout<<"Answer invalid. Would you like to raise (Y/N)?: "; // failsafe if other character added
       cin>>raise;
       if (raise=='Y' || raise=='N'){
         break;
@@ -183,10 +147,10 @@ int main() {
         moneypn-=raisevalue;
         pool+=raisevalue;
         if (moneycn<=0) {
-          cout<<"Dealer doesn't have enough money. You win the game. Thank you for playing!"<<endl;
+          cout<<"Dealer doesn't have enough money. You win the game. Thank you for playing!"<<endl; // auto lose (very player friendly)
           return 0;
         }
-        else if (raisevalue>=moneycn && moneycn>0){
+        else if (raisevalue>=moneycn && moneycn>0){ // if dealer can't match but has more than 0
           cout << endl;
           cout<<"The dealer goes all in..."<<endl;
           pool += moneycn;
@@ -199,7 +163,7 @@ int main() {
           pool+=raisevalue;
         }
       }
-      else if (raisevalue > moneypn){
+      else if (raisevalue > moneypn){ // failsafe
         cout<<"You do not have enough money! Please try again: ";
         cin>>raisevalue;
       }
@@ -212,28 +176,20 @@ int main() {
     }
   }
     cout<<"The current pool is: $"<<pool<<endl;
-    // int c = 0;
-    // while (c < c_counter) {
-    //   cout << comp_deck[c];
-    //   if (c < (c_counter-1)) {
-    //     cout << " ";
-    //   }
-    //   c+= 1;
-    // }
-    // cout << endl;
-    int c_hand_value = comp_sum(comp_deck, c_counter);
+    
+    int c_hand_value = comp_sum(comp_deck, c_counter); // computes comp's hand
     cout << endl;
 
     bool skip = true, busted = false;
     if (p_hand_value > 21) {
-      cout << "Busted! You lose..." << endl;
+      cout << "Busted! You lose..." << endl; // auto lose because > 21
     }
     else {
       char decision = 'Y';
       while (decision == 'Y') {
         cout << "Do you want to draw a card (hit) (Y/N)?: ";
         cin >> decision;
-        while (decision!='Y' && decision!='N'){
+        while (decision!='Y' && decision!='N'){ // failsafe for other char
           cout<<"Answer invalid. Do you want to draw a card (hit) (Y/N)?: ";
           cin>>decision;
           if (decision=='Y' || decision=='N'){
@@ -293,8 +249,8 @@ int main() {
       c_hand_value = comp_sum(comp_deck, c_counter);
       cout << "Dealer's Hand Value: " << c_hand_value << endl;
       cout << endl;
-      char wl=determine_w_l(p_hand_value, c_hand_value);
-      if (wl=='w'){
+      char wl=determine_w_l(p_hand_value, c_hand_value); // returns if win or lost
+      if (wl=='w'){ // win
         moneypn+=pool;
         ofstream fout;
         fout.open(name+".txt");
@@ -303,7 +259,7 @@ int main() {
         fout<<moneycn<<endl;
         fout.close();
       }
-      else if (wl=='l') {
+      else if (wl=='l') { // lose
         moneycn+=pool;
         ofstream fout;
         fout.open(name+".txt");
@@ -318,7 +274,7 @@ int main() {
       cout << endl;
     }
 
-    else if (busted == true) {
+    else if (busted == true) { // lose
       cout << endl;
       cout << "Dealer's Hand:" << endl;
       int c = 0;
@@ -357,7 +313,7 @@ int main() {
       cout << endl;
     }
    if (moneycn>0 && moneypn>0) {
-    cout << "Do you want to play again (Y/N)?: ";
+    cout << "Do you want to play again (Y/N)?: "; // loop to play again
     cin >> newgame;
     while (newgame!='Y' && newgame!='N'){
       cout<<"Answer invalid. Do you want to play again (Y/N)?: ";
