@@ -54,3 +54,7 @@ Once one of the players loses all his/her money after round(s), they lose, and t
 4) After it is made, type: ./game
 5) Enjoy the game!
 6) Anytime you want to play the game, simply type: ./game
+
+**Problem Statement**
+
+For this program, we assume that users will mostly input the correct values needed. However, we have made some failsafes. For example, if the user raises more money than he/she has, it will not allow it. However, as for the difference in integer inputs and char inputs, the user must put in either a integer or character respectively. Either way, we assume that the user will generally input the correct input.
