@@ -362,6 +362,7 @@ int main() {
       cout << "Dealer's Hand Value: " << c_hand_value << endl;
       cout << endl;
     }
+   if (moneycn>0) {
     cout << "Do you want to play again (Y/N)?: ";
     cin >> newgame;
     while (newgame!='Y' && newgame!='N'){
@@ -371,6 +372,11 @@ int main() {
         break;
       }
     }
+  }
+  else {
+    cout<<"Dealer has no money left. You win the game!"<<endl;
+    return 0;
+  }
   }
   cout << endl;
   cout << "Thank you for playing!" << endl;
